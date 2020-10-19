@@ -4,7 +4,10 @@ import Results from "./Results.js";
 import useDropdown from "./useDropdown";
 
 const SearchParams = () => {
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, LocationDropdown] = useDropdown("Location", "Seattle, WA", [
+    "Seattle, WA",
+    "San Francisco, CA",
+  ]);
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
@@ -38,7 +41,7 @@ const SearchParams = () => {
           requestPets();
         }}
       >
-        <label htmlFor="location">
+        {/* <label htmlFor="location">
           Location
           <input
             id="location"
@@ -46,7 +49,8 @@ const SearchParams = () => {
             placeholder="Location"
             onChange={(e) => setLocation(e.target.value)}
           />
-        </label>
+        </label> */}
+        <LocationDropdown />
         <AnimalDropdown />
         <BreedDropdown />
 
